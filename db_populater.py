@@ -14,9 +14,10 @@ def populate_utility_bills():
     tentant_user = add_user("tenant", "tenant@user.com")
     provider = add_provider("Enel", electricity_type)
     bill_deadline = date.today()
-    bill = add_bill(False, django.utils.timezone.now(), bill_deadline, 200, tentant_user, owner_user, provider)
+    bill = add_bill(False, django.utils.timezone.now(), bill_deadline, value=200, payee_user=tentant_user,
+                    owner=owner_user, provider=provider)
     payment = add_payment(payment_date=django.utils.timezone.now(), bill=bill)
-    print(payment.bill.propriety_user.username)
+    print(payment.bill.propriety_owner_user.username)
 
 
 def add_type(type: str) -> UtilityType:
@@ -41,7 +42,7 @@ def add_provider(name: str, type: UtilityType):
 def add_bill(is_payed: bool, post_date, bill_deadline, value: float, payee_user: User, owner: User, provider: Provider,
              file=None):
     b = Bill.objects.get_or_create(is_payed=is_payed, post_date=post_date, bill_deadline=bill_deadline, value=value,
-                                   payee_user=payee_user, propriety_user=owner, provider=provider, file=file)[0]
+                                   payee_user=payee_user, propriety_owner_user=owner, provider=provider, file=file)[0]
     b.save()
     return b
 
