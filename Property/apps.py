@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class UtilityBillsConfig(AppConfig):
+class PropertyConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'Fee'
+    name = 'Property'

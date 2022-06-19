@@ -1,3 +1,5 @@
 from django.contrib import admin
+from utility_bills.models import *
 
-# Register your models here.
+
+admin.register([UtilityType, Provider, Bill, Payment])

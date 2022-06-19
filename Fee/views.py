@@ -1,12 +1,7 @@
-from django.http import HttpResponse
 # -*- coding: utf-8 -*-
 from django.shortcuts import render, redirect
-from django.template import RequestContext
-from django.http import HttpResponseRedirect
-from django.urls import reverse
-from django.contrib.auth.models import User
 
-from Fee.models import Bill
+from Fee.models import UtilityBill
 from Fee.forms import DocumentForm
 
 
@@ -14,7 +9,7 @@ from Fee.forms import DocumentForm
 #     return HttpResponse("Hello, world. You're at the polls index.")
 
 
-def bill_file_list(request):
+def utility_bill_file_list(request):
     message = 'Upload as many files as you want!'
     # Handle file upload
     if request.method == 'POST':
@@ -22,14 +17,14 @@ def bill_file_list(request):
         if form.is_valid():
             # payee = User.objects.filter(username__startswith="tenant")[0]
             # print(payee.id)
-            some_bill = Bill.objects.first()
+            some_bill = UtilityBill.objects.first()
             some_bill.file = request.FILES['docfile']
             some_bill.pk = None
             some_bill.save()
             print(some_bill.pk)
 
             # Redirect to the document list after POST
-            return redirect('bill-file-list')
+            return redirect('utility-bill-file-list')
         else:
             message = 'The form is not valid. Fix the following error:'
     else:
@@ -37,7 +32,7 @@ def bill_file_list(request):
 
     # Load documents for the list page
     documents = []
-    for bill in Bill.objects.all():
+    for bill in UtilityBill.objects.all():
         if bill.file:
             documents.append(bill.file)
 

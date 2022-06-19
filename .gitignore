@@ -5,6 +5,7 @@
 __pycache__
 db.sqlite3
 media
+Manager/hidden_info.py
 
 # Backup files # 
 *.bak 
