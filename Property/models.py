@@ -18,7 +18,7 @@ class Region(models.Model):
 
 
 class City(models.Model):
-    country = models.ForeignKey(Region, on_delete=models.CASCADE)
+    region = models.ForeignKey(Region, on_delete=models.CASCADE)
     name = models.CharField(max_length=30, blank=False, null=False)
 
     class Meta:

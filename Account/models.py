@@ -15,7 +15,7 @@ class User(AbstractUser):
     isRealEstateAgent = models.BooleanField(default=False)
     userConnection = models.ManyToManyField("self", default=None, blank=True)
     USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = []
+    # REQUIRED_FIELDS = []
 
     class Meta:
         db_table = 'auth_user'
@@ -26,13 +26,18 @@ class WorksWithAgents(models.Model):
     worksWithAgents = models.BooleanField(default=True)
     receiveRecommendations = models.BooleanField(default=True)
 
+    def __str__(self):
+        return self.user.username
+
     class Meta:
         abstract = True
 
 
 class Manager(WorksWithAgents):
+    # username = models.CharField(default=None, max_length=50)
     isCollaborator = models.BooleanField(default=False)
     isOwner = models.BooleanField(default=False)
+    # username = self.user.username
 
 
 class Tenant(WorksWithAgents):

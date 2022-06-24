@@ -4,5 +4,5 @@ from django.contrib.auth.admin import UserAdmin
 
 
 admin.site.register(User, UserAdmin)
-admin.site.register([Manager, Tenant, Property, City, Region, Country, TenantHistory])
+admin.site.register([Manager, Tenant, TenantHistory])
 # Register your models here.

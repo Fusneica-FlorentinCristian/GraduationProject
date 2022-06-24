@@ -1,7 +1,7 @@
 from django.db import models
 from polymorphic.models import PolymorphicModel
 
-from Account.models import Property
+from Property.models import Property
 from django.conf import settings
 
 
