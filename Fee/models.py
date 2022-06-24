@@ -1,8 +1,8 @@
-from django.contrib.auth.models import User
 from django.db import models
 from polymorphic.models import PolymorphicModel
 
-import Property.models
+from Account.models import Property
+from django.conf import settings
 
 
 class UtilityType(models.Model):
@@ -25,15 +25,15 @@ class UtilityBill(Fee):
     type = models.ForeignKey(UtilityType, on_delete=models.DO_NOTHING, default=None, null=True)
     file = models.FileField(upload_to="Fee/UtilityBill", default=None, null=True)
     provider = models.ForeignKey(Provider, on_delete=models.DO_NOTHING, default=None, null=True)
-    property = models.ForeignKey(Property.models.Property, on_delete=models.DO_NOTHING)
+    property = models.ForeignKey(Property, on_delete=models.DO_NOTHING)
 
 
 class Rent(Fee):
-    property = models.ForeignKey(Property.models.Property, on_delete=models.DO_NOTHING)
+    property = models.ForeignKey(Property, on_delete=models.DO_NOTHING)
 
 
 class Subscription(Fee):
-    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.DO_NOTHING)
 
 
 class Payment(models.Model):

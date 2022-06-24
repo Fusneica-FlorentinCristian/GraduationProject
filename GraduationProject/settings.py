@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 from Manager.hidden_info import Hidden
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -36,6 +37,7 @@ MEDIA_URL = '/media/'
 # Application definition
 
 INSTALLED_APPS = [
+    'Account',
     'Fee',
     'Property',
     'polymorphic',
@@ -46,6 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+AUTH_USER_MODEL = 'Account.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

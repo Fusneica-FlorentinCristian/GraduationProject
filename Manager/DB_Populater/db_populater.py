@@ -5,7 +5,7 @@ import django
 django.setup()
 
 from django.contrib.auth.models import User
-from utility_bills.models import UtilityType, Provider, Bill, Payment
+from Fee.models import UtilityType, Provider, UtilityBill, Payment
 
 
 def populate_utility_bills():
@@ -41,13 +41,13 @@ def add_provider(name: str, type: UtilityType):
 
 def add_bill(is_payed: bool, post_date, bill_deadline, value: float, payee_user: User, owner: User, provider: Provider,
              file=None):
-    b = Bill.objects.get_or_create(is_payed=is_payed, post_date=post_date, bill_deadline=bill_deadline, value=value,
+    b = UtilityBill.objects.get_or_create(is_payed=is_payed, post_date=post_date, bill_deadline=bill_deadline, value=value,
                                    payee_user=payee_user, propriety_owner_user=owner, provider=provider, file=file)[0]
     b.save()
     return b
 
 
-def add_payment(payment_date, bill: Bill):
+def add_payment(payment_date, bill: UtilityBill):
     p = Payment.objects.get_or_create(payment_date=payment_date, bill=bill)[0]
     p.save()
     return p

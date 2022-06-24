@@ -1,8 +1,13 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render, redirect
 
-from Fee.models import UtilityBill
+# from Fee.models import UtilityBill
 from Fee.forms import DocumentForm
+from django.conf import settings
+
+from Fee.models import UtilityBill
+
+User = settings.AUTH_USER_MODEL
 
 
 # def index(request):
