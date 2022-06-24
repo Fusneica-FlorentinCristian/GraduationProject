@@ -1,17 +1,16 @@
 # -*- coding: utf-8 -*-
+from datetime import datetime
+
+from dateutil.relativedelta import relativedelta
 from django.shortcuts import render, redirect
 
 # from Fee.models import UtilityBill
 from Fee.forms import DocumentForm
-from django.conf import settings
-
 from Fee.models import UtilityBill
+from Manager.ManipulatePDF.manipulate_pdf import get_balance_HidroElectrica
 
-User = settings.AUTH_USER_MODEL
 
-
-# def index(request):
-#     return HttpResponse("Hello, world. You're at the polls index.")
+DEBUG = True
 
 
 def utility_bill_file_list(request):
@@ -22,11 +21,14 @@ def utility_bill_file_list(request):
         if form.is_valid():
             # payee = User.objects.filter(username__startswith="tenant")[0]
             # print(payee.id)
-            some_bill = UtilityBill.objects.first()
-            some_bill.file = request.FILES['docfile']
-            some_bill.pk = None
-            some_bill.save()
-            print(some_bill.pk)
+            if DEBUG:
+                some_bill = UtilityBill.objects.first()
+
+                new_bill = UtilityBill(deadline=datetime.today() + relativedelta(months=1), file=request.FILES['docfile'], property=some_bill.property, provider=some_bill.provider, type=some_bill.type)
+                new_bill.balance = get_balance_HidroElectrica(new_bill.file)
+                new_bill.save()
+
+                print("Printed--------------------------" + str(new_bill.pk))
 
             # Redirect to the document list after POST
             return redirect('utility-bill-file-list')
@@ -41,9 +43,11 @@ def utility_bill_file_list(request):
         if bill.file:
             documents.append(bill.file)
 
-    # documents = [bill.file for bill in Bill.objects.all()]
+    # if DEBUG:
+    #     for document in documents:
+    #         hidro_balance = get_balance_HidroElectrica(document)
+    #         print(hidro_balance)
 
-    # Render list page with the documents and the form
     context = {'documents': documents, 'form': form, 'message': message}
-    # print("!!!!!!!!!!!!!!!!!!!!----------------------------!!!!!!!!!!!!!!!!!!!!!!!" + str(documents[0].url))
+    # Render list page with the documents and the form
     return render(request, 'Fee/utility_bill_file_list.html', context)

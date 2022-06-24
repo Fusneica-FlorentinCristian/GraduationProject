@@ -18,7 +18,7 @@ class Fee(PolymorphicModel):
     isPayed = models.BooleanField(default=False)
     post_date = models.DateTimeField(verbose_name='Bill added', auto_now_add=True)
     deadline = models.DateField(verbose_name='due date', blank=True, default=None, null=True)
-    value = models.FloatField(null=True, default=0.0)
+    balance = models.FloatField(null=True, default=0.0)
 
 
 class UtilityBill(Fee):
