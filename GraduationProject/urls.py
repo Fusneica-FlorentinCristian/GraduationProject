@@ -19,7 +19,14 @@ from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
 
+from Account.views import tenantsView, managersView, baseView
+
 urlpatterns = [
+    path('', include('Account.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/signup/', baseView.SignUpView.as_view(), name='signup'),
+    path('accounts/signup/tenant/', tenantsView.TenantSignUpView.as_view(), name='tenant_signup'),
+    path('accounts/signup/administrator/', managersView.AdministratorSignUpView.as_view(), name='administrator_signup'),
     path('Fee/', include('Fee.urls')),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

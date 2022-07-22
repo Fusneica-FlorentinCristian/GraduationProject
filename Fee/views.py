@@ -7,7 +7,7 @@ from django.shortcuts import render, redirect
 # from Fee.models import UtilityBill
 from Fee.forms import DocumentForm
 from Fee.models import UtilityBill
-from Manager.ManipulatePDF.manipulate_pdf import get_balance_HidroElectrica
+from manager.ManipulatePDF.manipulate_pdf import get_balance_Enel_electricity
 
 
 DEBUG = True
@@ -22,10 +22,13 @@ def utility_bill_file_list(request):
             # payee = User.objects.filter(username__startswith="tenant")[0]
             # print(payee.id)
             if DEBUG:
+                # getting the property, provider and type from some_bill to add to new_bill
                 some_bill = UtilityBill.objects.first()
 
-                new_bill = UtilityBill(deadline=datetime.today() + relativedelta(months=1), file=request.FILES['docfile'], property=some_bill.property, provider=some_bill.provider, type=some_bill.type)
-                new_bill.balance = get_balance_HidroElectrica(new_bill.file)
+                new_bill = UtilityBill(deadline=datetime.today() + relativedelta(months=1),
+                                       file=request.FILES['docfile'], property=some_bill.property,
+                                       provider="Enel", type=some_bill.type)
+                new_bill.balance = get_balance_Enel_electricity(pdf=new_bill.file)
                 new_bill.save()
 
                 print("Printed--------------------------" + str(new_bill.pk))

@@ -42,7 +42,7 @@ class Migration(migrations.Migration):
                 ('first_name', models.CharField(blank=True, max_length=50, verbose_name='First Name of User')),
                 ('last_name', models.CharField(blank=True, max_length=50, verbose_name='Last Name of User')),
                 ('email', models.EmailField(blank=True, default='', max_length=254, null=True, verbose_name='Email Address')),
-                ('isManager', models.BooleanField(default=False)),
+                ('isAdministrator', models.BooleanField(default=False)),
                 ('isTenant', models.BooleanField(default=False)),
                 ('isRealEstateAgent', models.BooleanField(default=False)),
                 ('groups', models.ManyToManyField(blank=True, help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.', related_name='user_set', related_query_name='user', to='auth.group', verbose_name='groups')),
@@ -57,7 +57,7 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='Manager',
+            name='manager',
             fields=[
                 ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to=settings.AUTH_USER_MODEL)),
                 ('worksWithAgents', models.BooleanField(default=True)),
