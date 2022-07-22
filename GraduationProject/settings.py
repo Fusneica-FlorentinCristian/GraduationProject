@@ -10,14 +10,18 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
+import sys
 from pathlib import Path
 from manager.hidden_info import Hidden
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+print(BASE_DIR)
 
-
+sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
+# print(sys.path)
+print(BASE_DIR)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
@@ -37,9 +41,10 @@ MEDIA_URL = '/media/'
 # Application definition
 
 INSTALLED_APPS = [
-    'Account',
-    'Fee',
-    'Property',
+    # "Apps",
+    "Property",
+    "Account",
+    "Fee",
     'polymorphic',
     'django.contrib.admin',
     'django.contrib.auth',

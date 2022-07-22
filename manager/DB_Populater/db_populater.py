@@ -5,7 +5,7 @@ import django
 django.setup()
 
 from django.contrib.auth.models import User
-from Fee.models import UtilityType, Provider, UtilityBill, Payment
+from apps.Fee.models import UtilityType, Provider, UtilityBill, Payment
 
 
 def populate_utility_bills():
