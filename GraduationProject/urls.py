@@ -19,8 +19,9 @@ from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from GraduationProject.views.Account import tenantsView, administratorsView
-from GraduationProject.views import views
+from views.Account import tenantsView
+from views.Account import administratorsView
+from views import views
 
 urlpatterns = [
     path('', include('Account.urls')),
