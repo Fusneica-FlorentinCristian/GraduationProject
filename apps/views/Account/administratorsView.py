@@ -2,7 +2,7 @@ from django.contrib.auth import login
 from django.shortcuts import redirect
 from django.views.generic import (CreateView)
 
-from forms.accountForms import AdministratorSignUpForm
+from apps.forms.accountForms import AdministratorSignUpForm
 from apps.models.modelsAccount import User
 
 

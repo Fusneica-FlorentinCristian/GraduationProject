@@ -11,9 +11,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 import sys
-from pathlib import Path
+# from pathlib import Path
 from manager.hidden_info import Hidden
-
+import crispy_forms
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
+    'rest_framework',
+    'corsheaders'
 ]
 
 AUTH_USER_MODEL = 'Account.User'
@@ -60,9 +62,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware'
 ]
 
-ROOT_URLCONF = 'GraduationProject.urls'
+ROOT_URLCONF = 'apps.urls.urls'
 
 LOGIN_REDIRECT_URL = "profile"
 
@@ -87,17 +90,6 @@ WSGI_APPLICATION = 'GraduationProject.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#         'USER': '',
-#         'PASSWORD': '',
-#         'HOST': '',
-#         'PORT': '',
-#     }
-# }
 
 DATABASES = {
    'default': {
@@ -151,6 +143,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# React stuff :)
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.AllowAny']
+}
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Media Files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

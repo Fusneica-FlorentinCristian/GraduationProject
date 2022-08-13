@@ -19,16 +19,15 @@ from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from views.Account import tenantsView
-from views.Account import administratorsView
-from views import views
+from apps.views.Account import tenantsView, administratorsView
+from apps.views import views
 
 urlpatterns = [
-    path('', include('Account.urls')),
+    path('', include('apps.urls.urlsAccount')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/signup/', views.SignUpView.as_view(), name='signup'),
     path('accounts/signup/tenant/', tenantsView.TenantSignUpView.as_view(), name='tenant_signup'),
     path('accounts/signup/administrator/', administratorsView.AdministratorSignUpView.as_view(), name='administrator_signup'),
-    path('Fee/', include('Fee.urls')),
+    path('Fee/', include('apps.urls.urlsFee')),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
