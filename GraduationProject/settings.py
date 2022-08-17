@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os
 import sys
 # from pathlib import Path
-from manager.hidden_info import Hidden
+from utils.hidden_info import Hidden
 import crispy_forms
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "Property",
     "Account",
     "Fee",
+    "API",
     'polymorphic',
     'django.contrib.admin',
     'django.contrib.auth',

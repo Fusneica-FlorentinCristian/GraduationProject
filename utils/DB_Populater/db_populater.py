@@ -1,12 +1,18 @@
 import os
 from datetime import date
+
+
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'GraduationProject.settings')
 import django
 django.setup()
 
-from django.contrib.auth.models import User
 from apps.models.modelsFee import UtilityType, Provider, UtilityBill, Payment
+from apps.models import User
 
+
+def get_utility_bills():
+    # print(UtilityType.objects.all()[0].get_deferred_fields())
+    print(UtilityType)
 
 def populate_utility_bills():
     electricity_type = add_type("Electricity")
@@ -55,8 +61,8 @@ def add_payment(payment_date, bill: UtilityBill):
 
 # Start execution here!
 if __name__ == '__main__':
-    print("Starting Rango population script...")
-    populate_utility_bills()
+    print("Starting population script...")
+    get_utility_bills()
 
     # write "python db_populater.py" in shell in Django project’s root
     # make sure to have the right migrations

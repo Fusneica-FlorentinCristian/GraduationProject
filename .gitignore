@@ -5,7 +5,7 @@
 __pycache__
 db.sqlite3
 media
-manager/hidden_info.py
+utils/hidden_info.py
 
 # Backup files # 
 *.bak 
@@ -140,4 +140,4 @@ GitHub.sublime-settings
 .history
 
 # Others #
-manager/ManipulatePDF/files/**
+utils/ManipulatePDF/files/**

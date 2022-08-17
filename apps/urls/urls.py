@@ -28,6 +28,7 @@ urlpatterns = [
     path('accounts/signup/', views.SignUpView.as_view(), name='signup'),
     path('accounts/signup/tenant/', tenantsView.TenantSignUpView.as_view(), name='tenant_signup'),
     path('accounts/signup/administrator/', administratorsView.AdministratorSignUpView.as_view(), name='administrator_signup'),
-    path('Fee/', include('apps.urls.urlsFee')),
+    path('fee/', include('apps.urls.urlsFee')),
+    path('api/', include('apps.urls.urlsAPI')),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

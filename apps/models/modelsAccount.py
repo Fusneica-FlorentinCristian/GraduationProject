@@ -70,6 +70,13 @@ class Tenant(WorksWithAgents):
     class Meta:
         app_label = "Account"
 
+    # def __str__(self):
+    #     representation = ''
+    #     representation += f"{[region for region in self.regionInterested]}"
+    #     representation += f"{[region for region in self.regionInterested]}"
+    #     representation += f"{[region for region in self.regionInterested]}"
+    #     return self.name
+
 
 class TenantHistory(models.Model):
     tenant = models.ForeignKey(Tenant, on_delete=models.DO_NOTHING)

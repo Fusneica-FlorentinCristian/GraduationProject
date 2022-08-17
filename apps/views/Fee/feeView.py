@@ -7,7 +7,7 @@ from django.shortcuts import render, redirect
 # from Fee.models import UtilityBill
 from apps.forms.feeForms import DocumentForm
 from apps.models.modelsFee import UtilityBill
-from manager.ManipulatePDF.manipulate_pdf import get_balance_Enel_electricity
+from utils.ManipulatePDF.manipulate_pdf import get_balance_Enel_electricity
 
 
 DEBUG = True
