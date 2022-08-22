@@ -2,10 +2,10 @@ from pprint import pprint
 
 from django.db.models.fields.related import RelatedField, OneToOneField, ForeignKey
 from rest_framework.views import APIView
-from ..models import UtilityType, Property
+from apps.models import UtilityType, Property
 from rest_framework.response import Response
-from ..serializers.feeSerializer import UtilityTypeSerializer
-from ..serializers.propertySerializer import PropertySerializer
+from apps.serializers.feeSerializer import UtilityTypeSerializer
+from apps.serializers.propertySerializer import PropertySerializer
 from itertools import chain
 
 

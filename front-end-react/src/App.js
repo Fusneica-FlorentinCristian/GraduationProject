@@ -1,19 +1,24 @@
 import React from 'react';
-class App extends React.Component {
-    render() {
-        return(
-            <div>
-                <div>
-                    <div>
-                        <h1>Quote is going to be written here</h1>
-                        <footer>--- by
-                          <cite title="Source Title">
-                              written by meeeee
-                          </cite>
-                        </footer>
-                    </div>
-                </div>
-            </div>);
-    }
+import axios from 'axios';
+import { useLocation, BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Login from "../components/Login";
+import Register from "../components/Register";
+import Reset from "../components/Reset";
+import Dashboard from "../components/Dashboard";
+import Main from "../components/Main";
+
+export default function App() {
+    return (
+        <div className="App">
+            <Router>
+                <Routes>
+                    <Route exact path="/login" element={<Login />} />
+                    <Route exact path="/register" element={<Register />} />
+                    <Route exact path="/reset" element={<Reset />} />
+                    <Route exact path="/dashboard" element={<Dashboard />} />
+                    <Route exact path="/*"  element={<Main/>} />
+                </Routes>
+            </Router>
+        </div>
+    )
 }
-export default App;

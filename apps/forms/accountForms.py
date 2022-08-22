@@ -53,4 +53,3 @@ class TenantInterestsForm(forms.ModelForm):
         widgets = {
             'interests': forms.CheckboxSelectMultiple
         }
-

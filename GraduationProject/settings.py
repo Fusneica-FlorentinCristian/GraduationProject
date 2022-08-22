@@ -36,11 +36,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    # "Apps",
-    "Property",
-    "Account",
-    "Fee",
-    "API",
     'polymorphic',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -50,7 +45,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
+    "apps",
+    "apps.Property",
+    "apps.Account",
+    "apps.Fee",
+    "apps.API",
 ]
 
 AUTH_USER_MODEL = 'Account.User'
@@ -148,8 +148,19 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # React stuff :)
 REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    # 'DEFAULT_RENDERER_CLASSES': (
+    #     'rest_framework.renderers.JSONRenderer',
+    # ),
     'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.AllowAny']
 }
+
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER': 'apps.serializers.accountSerializer.UserDetailsSerializer',
+}
+
 CORS_ORIGIN_ALLOW_ALL = True
 
 # Media Files
