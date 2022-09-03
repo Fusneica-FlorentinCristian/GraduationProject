@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'rest_framework',
     'corsheaders',
+    'phonenumber_field',
     "apps",
     "apps.Property",
     "apps.Account",
@@ -161,8 +162,13 @@ REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'apps.serializers.accountSerializer.UserDetailsSerializer',
 }
 
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_ALLOW_ALL = False
 
 # Media Files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+CORS_ORIGIN_WHITELIST = (
+  'http://localhost:8000',
+  'http://localhost:3000'
+)

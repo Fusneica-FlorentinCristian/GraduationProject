@@ -30,7 +30,8 @@ class Fee(PolymorphicModel):
     isPayed = models.BooleanField(default=False)
     post_date = models.DateTimeField(verbose_name='Bill added', auto_now_add=True)
     deadline = models.DateField(verbose_name='due date', blank=True, default=None, null=True)
-    balance = models.FloatField(null=True, default=0.0)
+    total_price = models.FloatField(null=True, default=0.0)
+    associatedProperty = models.ForeignKey("Property.Property", null=True, blank=True, on_delete=models.SET_NULL)
 
     class Meta:
         app_label = "Fee"

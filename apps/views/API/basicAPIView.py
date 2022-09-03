@@ -58,10 +58,24 @@ class UtilityTypeAPIView(BasicAPIView):
         super().__init__(serializer, model, **kwargs)
 
 
-class PropertyAPIView(BasicAPIView):
+class PropertyAPIView2(BasicAPIView):
     def __init__(self, serializer=PropertySerializer, model=Property, **kwargs):
         super().__init__(serializer, model, **kwargs)
 
+
+class PropertyAPIView(APIView):
+    serializer_class = PropertySerializer
+
+    def get(self, request):
+        detail = [detail
+                  for detail in Property.objects.all()]
+        return Response(detail)
+
+    def post(self, request):
+        serializer = PropertySerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data)
 
 # model_fields = [f.name for f in self.model._meta.get_fields()]
 # print(model_fields)

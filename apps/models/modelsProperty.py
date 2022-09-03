@@ -37,6 +37,7 @@ class Property(models.Model):
     owner = models.ForeignKey("Account.Administrator", on_delete=models.CASCADE, blank=False, null=False)
     tenants = models.ManyToManyField("Account.Tenant", blank=True, default=None)
     location = models.ForeignKey(City, on_delete=models.DO_NOTHING, blank=True, null=False, default=None)
+    paymentTotal = models.FloatField(default=0, blank=False, null=False)
 
     class Meta:
         verbose_name_plural = "Properties"

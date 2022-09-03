@@ -1,0 +1,31 @@
+h1, h2, h3, h4, h5, h6, p, a {
+    font-weight: normal;
+}
+
+p {
+    font-size: 16px;
+}
+
+h6, a {
+    font-size: 12px;
+}
+
+h5 {
+    font-size: 18px;
+}
+
+h4 {
+    font-size: 27px;
+}
+
+h3 {
+    font-size: 40px;
+}
+
+h2 {
+    font-size: 60px;
+}
+
+h1 {
+    font-size: 90px;
+}

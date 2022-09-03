@@ -1,24 +1,36 @@
-import React from 'react';
-import axios from 'axios';
-import { useLocation, BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Login from "../components/Login";
-import Register from "../components/Register";
-import Reset from "../components/Reset";
-import Dashboard from "../components/Dashboard";
-import Main from "../components/Main";
+import './App.css';
+import './theme.css'
+import {Route, BrowserRouter as Router, Routes, useLocation} from "react-router-dom";
+import Login from "./Pages/Login";
+import Page from "./components/page";
+import {useEffect, useState} from "react";
+import {getProperty} from "./requests";
+import Register from "./Pages/Register";
 
 export default function App() {
+
+    const location = useLocation()
+
+    useEffect(() => {
+        // console.log(location)
+    }, [location])
     return (
-        <div className="App">
-            <Router>
-                <Routes>
-                    <Route exact path="/login" element={<Login />} />
-                    <Route exact path="/register" element={<Register />} />
-                    <Route exact path="/reset" element={<Reset />} />
-                    <Route exact path="/dashboard" element={<Dashboard />} />
-                    <Route exact path="/*"  element={<Main/>} />
-                </Routes>
-            </Router>
-        </div>
-    )
+      <div className="App">
+          <Routes>
+                <Route exact path="/login" element={
+                    <Page title="Login">
+                        <Login/>
+                    </Page>
+                }/>
+              <Route exact path="/register" element={
+                  <Page title="Register">
+                      <Register/>
+                  </Page>
+              }/>
+                <Route exact path="/*"  element={
+                    <Page title="Page unknown"/>
+                }/>
+          </Routes>
+      </div>
+  );
 }

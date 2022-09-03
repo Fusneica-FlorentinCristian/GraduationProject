@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
+from phonenumber_field.modelfields import PhoneNumberField
 
 from apps.models.modelsProperty import Country, City, Region, Property
 
@@ -15,7 +16,8 @@ class User(AbstractUser):
     isTenant = models.BooleanField(default=False)
     isRealEstateAgent = models.BooleanField(default=False)
     userConnection = models.ManyToManyField("self", default=None, blank=True)
-    USERNAME_FIELD = 'username'
+    # USERNAME_FIELD = 'username'
+    phone_number = PhoneNumberField(null=True, blank=True, verbose_name="Phone number")
     # REQUIRED_FIELDS = []
     # objects = UserManager()
 
@@ -38,10 +40,8 @@ class WorksWithAgents(models.Model):
 
 
 class Administrator(WorksWithAgents):
-    # username = models.CharField(default=None, max_length=50)
-    isCollaborator = models.BooleanField(default=False)
-    isOwner = models.BooleanField(default=False)
-    # username = self.user.username
+    isCollaborator = models.BooleanField("Collaborates with other administrators", default=False)
+    isOwner = models.BooleanField("Has properties", default=False)
 
     class Meta:
         app_label = "Account"
