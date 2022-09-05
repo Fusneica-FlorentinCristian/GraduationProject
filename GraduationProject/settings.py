@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework_simplejwt.token_blacklist',
     'crispy_forms',
     'rest_framework',
     'corsheaders',
@@ -96,7 +97,7 @@ WSGI_APPLICATION = 'GraduationProject.wsgi.application'
 DATABASES = {
    'default': {
        'ENGINE': 'django.db.backends.postgresql',
-       'NAME': 'db',
+       'NAME': 'postgres',
        'USER': 'postgres',
        'PASSWORD': DB_pass,
        'HOST': 'localhost',

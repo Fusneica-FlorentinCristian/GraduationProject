@@ -24,36 +24,13 @@ class MyUserManager(UserManager):
 
         return user
 
-    def create_superuser(self, username, email, password):
-        """
-        Create and return a `User` with superuser (admin) permissions.
-        """
-        if password is None:
-            raise TypeError('Superusers must have a password.')
-        if email is None:
-            raise TypeError('Superusers must have an email.')
-        if username is None:
-            raise TypeError('Superusers must have an username.')
-
-        user = self.create_user(username, email, password)
-        user.is_superuser = True
-        user.is_staff = True
-        user.save(using=self._db)
-
-        return user
-
 
 class User(AbstractUser):
     # username = models.CharField(_('Username'), blank=False, null=False, max_length=25)
     first_name = models.CharField(_('First Name of User'), blank=True, max_length=50)
     last_name = models.CharField(_('Last Name of User'), blank=True, max_length=50)
     email = models.EmailField(_("Email Address"), blank=True, null=True, default="")
-    isAdministrator = models.BooleanField(default=False)
-    isTenant = models.BooleanField(default=False)
-    isRealEstateAgent = models.BooleanField(default=False)
-    userConnection = models.ManyToManyField("self", default=None, blank=True)
     # USERNAME_FIELD = 'username'
-    phone_number = PhoneNumberField(null=True, blank=True, verbose_name="Phone number")
     # REQUIRED_FIELDS = []
     objects = MyUserManager()
 
@@ -67,6 +44,14 @@ class WorksWithAgents(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     worksWithAgents = models.BooleanField(default=False)
     receiveRecommendations = models.BooleanField(default=True)
+    phone_number = PhoneNumberField(null=True, blank=True, verbose_name="Phone number")
+    date_of_birth = models.DateField(null=True, blank=True, verbose_name="Date of birth")
+    profile_picture = models.ImageField(null=True, blank=True, default=None)
+    nationality = models.CharField(max_length=25, blank=True, default=None, null=True)
+    isAdministrator = models.BooleanField(default=False)
+    isTenant = models.BooleanField(default=False)
+    isRealEstateAgent = models.BooleanField(default=False)
+    userConnection = models.ManyToManyField("self", default=None, blank=True)
 
     def __str__(self):
         return self.user.username
