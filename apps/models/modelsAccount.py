@@ -32,6 +32,9 @@ class User(AbstractUser):
     email = models.EmailField(_("Email Address"), blank=True, null=True, default="")
     # USERNAME_FIELD = 'username'
     # REQUIRED_FIELDS = []
+    isAdministrator = models.BooleanField(default=False)
+    isTenant = models.BooleanField(default=False)
+    isRealEstateAgent = models.BooleanField(default=False)
     objects = MyUserManager()
 
     class Meta:
@@ -48,9 +51,6 @@ class WorksWithAgents(models.Model):
     date_of_birth = models.DateField(null=True, blank=True, verbose_name="Date of birth")
     profile_picture = models.ImageField(null=True, blank=True, default=None)
     nationality = models.CharField(max_length=25, blank=True, default=None, null=True)
-    isAdministrator = models.BooleanField(default=False)
-    isTenant = models.BooleanField(default=False)
-    isRealEstateAgent = models.BooleanField(default=False)
     userConnection = models.ManyToManyField("self", default=None, blank=True)
 
     def __str__(self):
