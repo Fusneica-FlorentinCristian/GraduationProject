@@ -1,5 +1,5 @@
 import axios from "axios";
-import {baseUrl, getCookie, setCookie, removeCookie, clearCookies} from "../src/utilities/apiUtilities";
+import {baseUrl} from "../src/utilities/apiUtilities";
 
 export const apiController = (url, method, data, authorization) => {
     const config = {
@@ -37,9 +37,9 @@ export const getUtilityTypes = (utilityTypeDepth) => {
     return apiController(GET_UTILITY_TYPE_ENDPOINT, 'GET')
 };
 
-export const getUser = (userId) => {
-    const GET_PROPERTY_ENDPOINT= baseUrl('api/utility_types/' + userId + '/');
-    return apiController(GET_PROPERTY_ENDPOINT, 'GET')
+export const getUser = (userData) => {
+    const GET_USER_ENDPOINT= baseUrl('api/auth/login/');
+    return apiController(GET_USER_ENDPOINT, 'POST', userData)
 };
 
 export const setUser = (userData) => {

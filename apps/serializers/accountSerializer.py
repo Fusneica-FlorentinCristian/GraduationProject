@@ -8,8 +8,8 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'is_active']
-        read_only_field = ['is_active', "isAdministrator", "isTenant"]
+        fields = ['id', 'username', 'email', 'is_active', "isAdministrator", "isTenant"]
+        read_only_field = ['is_active']
     #
     # def __dict__(self):
     #     return dict(self)
@@ -22,8 +22,8 @@ class TenantsReadOnlySerializer(serializers.ModelSerializer):
 
     # def __dict__(self):
 
-class AdministratorReadOnlySerializer(serializers.ModelSerializer):
 
+class AdministratorReadOnlySerializer(serializers.ModelSerializer):
     class Meta:
         model = Administrator
         read_only_field = ["isCollaborator", "user"]

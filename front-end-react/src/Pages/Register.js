@@ -1,15 +1,14 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {setUser} from "../requests";
 import {setCookie} from "../utilities/apiUtilities";
 import {useLocation, useNavigate} from "react-router-dom";
-import {Button, Grid, Paper, TextField} from "@mui/material";
+import {Alert, Button, FormControl, FormControlLabel, Grid, Paper, Radio, RadioGroup} from "@mui/material";
 import {Link} from "react-router-dom";
 import TextFieldExtended from "../components/TextFieldExtended";
+import FormLabel from "@mui/material/FormLabel";
+import Page from "../components/Page";
 
 export default function Register(){
-
-    const [isLoading, setIsLoading] = useState(true)
-    const [data, setData] = useState(null)
     const [error, setError] = useState(null)
     const location = useLocation()
     const navigate = useNavigate()
@@ -17,12 +16,15 @@ export default function Register(){
         email: "",
         password: "",
         username: "",
+        role: "tenant"
     })
 
 
     const handleSubmit = (event) =>
     {
         event.preventDefault()
+        console.log(formData)
+
         setUser(formData).then(response => {
             if(response?.status) {
                 //    this means that we have received a valid response
@@ -39,24 +41,34 @@ export default function Register(){
     }
 
     const handleInputChange = (event) => {
-        console.log(event.target.id, event.target.value)
-        setFormData((pastFormData) => {
-            pastFormData[event.target.id] = event.target.value
-            return {...pastFormData}
+        console.log(event.target)
+        const {name, value, type, checked} = event.target
+        console.log(name, value, type, checked, event.target.id)
+        setError(null)
+        setFormData(prevFormData => {
+            prevFormData[event.target.id ? event.target.id: name] = type === "checkbox" ? checked : value
+            console.log(prevFormData)
+            return {
+                ...prevFormData,
+            }
         })
     }
 
     return (
-        <Grid container item justifyContent="center" p={2}>
-            <Paper elevation={3}>
-                <form onSubmit={handleSubmit}>
-                    <Grid item container xs={12} p={3} gap={2} flexDirection="column" alignItems="flex-start">
+        <Page title="Register">
+            <Grid container item justifyContent="center" p={2}>
+                <Paper elevation={3}>
+                    <form onSubmit={handleSubmit}>
+                        <Grid item container xs={12} p={3} gap={2} flexDirection="column" alignItems="flex-start">
+                            {!!error && !!error['detail'] && <Alert color="error">{error['detail']}</Alert>}
+
                             <Grid container item flexDirection="column" gap={2}>
                                 {
                                     Object.keys(formData).map(key =>
+                                        key !== "role" &&
                                         <TextFieldExtended key={key}
                                                            name={key}
-                                                           fieldType={key === "password" && key}
+                                                           fieldType={key === "password" ? "password" : "text"}
                                                            hasError={error && !!error[key]}
                                                            defaultValue={formData[key]}
                                                            helperText={error && !!error[key] && error[key][0]}
@@ -64,6 +76,19 @@ export default function Register(){
                                         />
                                     )
                                 }
+                                <FormControl>
+                                    <FormLabel id="demo-radio-buttons-group-label">Are you a landlord or a tenant?</FormLabel>
+                                    <RadioGroup
+                                        aria-labelledby="demo-radio-buttons-group-label"
+                                        defaultValue={formData.role}
+                                        // name="role"
+                                        // id="role"
+                                        onChange={handleInputChange}
+                                    >
+                                        <FormControlLabel id="role" value="tenant" name="role" control={<Radio />} label="Tenant" />
+                                        <FormControlLabel id="role" value="owner" name="role" control={<Radio />} label="Landlord" />
+                                    </RadioGroup>
+                                </FormControl>
                                 <Button variant="contained" color="primary" type="submit">
                                     Submit
                                 </Button>
@@ -72,16 +97,9 @@ export default function Register(){
                                     <Link to="/login">Log in</Link>
                                 </Grid>
                             </Grid>
-                    </Grid>
-                </form>
-            </Paper>
-        </Grid>
-
-        // <div>
-        //     <p>Errors: {error && JSON.stringify(error)}</p>
-        //     <p>Data: {data && JSON.stringify(data)}</p>
-        //     {/*{property ? JSON.stringify(property) : 'Still loading'}*/}
-        // </div>
-
-)
+                        </Grid>
+                    </form>
+                </Paper>
+            </Grid>
+        </Page>);
 }
