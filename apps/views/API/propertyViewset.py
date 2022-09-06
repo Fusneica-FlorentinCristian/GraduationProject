@@ -15,8 +15,8 @@ class PropertyViewSet(viewsets.ModelViewSet):
     # ordering = ['-updated']
 
     def get_queryset(self):
-        if self.request.user.is_superuser:
-            return Property.objects.all()
+        # if self.request.user.is_superuser:
+        return Property.objects.all()
 
     def get_object(self):
         lookup_field_value = self.kwargs[self.lookup_field]

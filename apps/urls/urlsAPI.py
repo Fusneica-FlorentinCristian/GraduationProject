@@ -6,7 +6,7 @@ from rest_framework.routers import SimpleRouter
 
 from ..views.API.accountAPIView import UserViewSet
 from apps.views.API.authViewsets import LoginViewSet, RegistrationViewSet, RefreshViewSet
-from apps.views.API.propertyAPIView import PropertyViewSet
+from apps.views.API.propertyViewset import PropertyViewSet
 from apps.views.API.feeAPIView import UtilityTypeViewSet
 
 routes = SimpleRouter()
