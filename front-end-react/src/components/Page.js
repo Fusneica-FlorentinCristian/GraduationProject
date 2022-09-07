@@ -20,6 +20,8 @@ import ListItemText from "@mui/material/ListItemText";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import {useAuth} from "./AuthProvider";
+import {useEffect} from "react";
 
 function ElevationScroll(props) {
     const { children, window } = props;
@@ -117,6 +119,14 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 export default function Page(props) {
     // const theme = useTheme();
     const [open, setOpen] = React.useState(false);
+
+    const auth = useAuth()
+
+    useEffect(() => {
+        if(auth.onLogin) {
+            auth.onLogin()
+        }
+    }, [auth])
 
     const handleDrawerOpen = () => {
         // console.log(prevOpen)

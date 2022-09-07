@@ -5,14 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c28dd135-9687-48de-92bd-d088f7edcbc2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../GraduationProject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../GraduationProject/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../apps/models/modelsAccount.py" beforeDir="false" afterPath="$PROJECT_DIR$/../apps/models/modelsAccount.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apps/models/modelsProperty.py" beforeDir="false" afterPath="$PROJECT_DIR$/../apps/models/modelsProperty.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apps/serializers/serializer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apps/urls/routers.py" beforeDir="false" afterPath="$PROJECT_DIR$/../apps/urls/routers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apps/urls/urlsAPI.py" beforeDir="false" afterPath="$PROJECT_DIR$/../apps/urls/urlsAPI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apps/views/viewsets.py" beforeDir="false" afterPath="$PROJECT_DIR$/../apps/views/API/authViewsets.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apps/serializers/accountSerializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../apps/serializers/accountSerializer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apps/serializers/authSerializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../apps/serializers/authSerializer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/requests.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/requests.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +46,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/ReposDev/GraduationProject/front-end-react",
+    "last_opened_file_path": "D:/ReposDev/Git/GraduationProject/front-end-react/src/Pages",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
@@ -81,8 +81,7 @@
       <workItem from="1662120385467" duration="393000" />
       <workItem from="1662120824444" duration="2940000" />
       <workItem from="1662124066351" duration="5090000" />
-      <workItem from="1662194149356" duration="42562000" />
-      <workItem from="1662456720607" duration="722000" />
+      <workItem from="1662194149356" duration="60390000" />
     </task>
     <servers />
   </component>
