@@ -71,8 +71,8 @@ class PropertyManager(models.Manager):
             year=year,
             currency_type=currency_type,
             rent_price=rent_price,
-            selling_price=selling_price
-        )
+            selling_price=selling_price)
+
         estate.save()
 
 
@@ -94,8 +94,9 @@ class Property(models.Model):
 
 
 class PropertyPicture(models.Model):
-    image = models.ImageField(height_field=150, width_field=150)
     property = models.ForeignKey(Property, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="Property/", default=None, null=True,
+                              height_field=150, width_field=150)
 
 
 class MyForm(forms.ModelForm):

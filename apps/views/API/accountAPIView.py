@@ -1,5 +1,7 @@
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
 from rest_framework.generics import get_object_or_404
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework import filters
 from rest_framework.response import Response
@@ -12,18 +14,21 @@ class UserViewSet(viewsets.ModelViewSet):
     http_method_names = ['get']
     serializer_class = UserSerializer
     permission_classes = (AllowAny,)
-    # filter_backends = [filters.OrderingFilter]
-    # ordering_fields = ['updated']
-    # ordering = ['-updated']
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]  # , filters.OrderingFilter]
+    ordering_fields = ['username', "first_name", "last_name", "isAdministrator", "isTenant"]
+    filterset_fields = ['username', "first_name", "last_name", "isAdministrator", "isTenant"]
+    search_fields = ['username', "first_name", "last_name", "isAdministrator", "isTenant"]
+    ordering = ['username']
+    pagination_class = PageNumberPagination
 
     def get_queryset(self):
         # if self.request.user.is_superuser:
         return User.objects.all()
 
-    def list(self, request):
-        queryset = User.objects.all()
-        serializer = UserSerializer(queryset, many=True)
-        return Response(serializer.data)
+    # def list(self, request):
+    #     queryset = User.objects.all()
+    #     serializer = UserSerializer(queryset, many=True)
+    #     return Response(serializer.data)
 
     def retrieve(self, request, pk=None):
         queryset = User.objects.all()

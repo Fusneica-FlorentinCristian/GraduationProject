@@ -19,6 +19,12 @@ class PropertySerializer(serializers.ModelSerializer):
                 raise e
         return estate
 
+    def save(self, owner, validated_data):
+        try:
+            property = Property.objects.create_property(owner_user_id=owner, **validated_data)
+        except Exception as e:
+            raise e
+        return property
 
 class PropertyReadOnlySerializer(serializers.ModelSerializer):
     class Meta:

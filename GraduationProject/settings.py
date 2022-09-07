@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     'crispy_forms',
     'rest_framework',
+    'django_filters',
     'corsheaders',
     'phonenumber_field',
     "apps",
@@ -150,12 +151,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # React stuff :)
 REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend'
+    ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
-    # 'DEFAULT_RENDERER_CLASSES': (
-    #     'rest_framework.renderers.JSONRenderer',
-    # ),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 2,
     'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.AllowAny']
 }
 
