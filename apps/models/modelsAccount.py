@@ -8,22 +8,22 @@ from apps.models.modelsProperty import Country, City, Region, Property
 
 
 class MyUserManager(UserManager):
-    def create_user(self, username, isAdministrator=False, isTenant=False, email=None, password=None, **kwargs):
+    def create_user(self, username, is_administrator=False, is_tenant=False, email=None, password=None, **kwargs):
         """Create and return a `User` with an email, phone number, username and password."""
         if username is None:
             raise TypeError('Users must have a username.')
         if email is None:
             raise TypeError('Users must have an email.')
-        if isAdministrator is False and isTenant is False:
+        if is_administrator is False and is_tenant is False:
             raise TypeError('Users must have a role.')
 
-        user = self.model(username=username, email=self.normalize_email(email), isTenant=isTenant,
-                          isAdministrator=isAdministrator)
+        user = self.model(username=username, email=self.normalize_email(email), isTenant=is_tenant,
+                          isAdministrator=is_administrator)
         user.set_password(password)
         user.save(using=self._db)
-        if isAdministrator:
+        if is_administrator:
             Administrator(user=user).save()
-        if isTenant:
+        if is_tenant:
             Tenant(user=user).save()
 
         return user
