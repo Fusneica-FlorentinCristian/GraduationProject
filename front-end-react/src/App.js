@@ -6,6 +6,11 @@ import Home from "./Pages/Home";
 import {getCookie} from "./utilities/apiUtilities";
 import {useAuth, UserProvider} from "./components/AuthProvider";
 import Login from "./Pages/Login";
+import Register from "./Pages/Register";
+import Page from "./components/Page";
+import UtilityTypes from "./Pages/UtilityTypes";
+import Properties from "./Pages/Properties";
+import Users from "./Pages/Users";
 
 
 
@@ -19,8 +24,8 @@ export default function App() {
     // const [user, setUser] = useState(null)
 
     return (
-        <UserProvider>
             <div className="App">
+                <UserProvider>
                   <Routes>
                       {/*{*/}
                       {/*    Object.keys(navigationItems).map(pathname =>*/}
@@ -28,15 +33,18 @@ export default function App() {
                       {/*                      role={role}*/}
                       {/*        />)*/}
                       {/*}*/}
-                      <Route exact path="/something" element={<Home/>}/>
+                      <Route exact path="/home" element={<Home/>}/>
+                      <Route exact path="/property" element={<Properties/>}/>
+                      <Route exact path="/user" element={<Users/>}/>
                       <Route exact path="/login" element={<Login/>}/>
-                      {/*<Route exact path="/register" element={<Register/>}/>*/}
+                      <Route exact path="/register" element={<Register/>}/>
                       {/*<Route exact path="/" element={<Home usedRoutes={usedRoutes}/>}/>*/}
-                      {/*<Route path="/*"  element={<Page title="Page unknown"/>}/>*/}
+                      <Route exact path="/" element={<Home />}/>
+                      <Route path="/*"  element={<Page title="Page unknown"/>}/>
                       {/*{usedRoutes && usedRoutes.map(pageName => navigationItems[pageName])}*/}
                   </Routes>
+                </UserProvider>
             </div>
-        </UserProvider>
 
     );
 }

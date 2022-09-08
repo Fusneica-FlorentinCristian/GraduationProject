@@ -5,13 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c28dd135-9687-48de-92bd-d088f7edcbc2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/GraduationProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/GraduationProject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GraduationProject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../GraduationProject/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../apps/models/modelsAccount.py" beforeDir="false" afterPath="$PROJECT_DIR$/../apps/models/modelsAccount.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apps/serializers/accountSerializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../apps/serializers/accountSerializer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apps/serializers/authSerializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../apps/serializers/authSerializer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apps/views/API/authViewsets.py" beforeDir="false" afterPath="$PROJECT_DIR$/../apps/views/API/authViewsets.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apps/views/API/propertyViewset.py" beforeDir="false" afterPath="$PROJECT_DIR$/../apps/views/API/propertyViewset.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/UtilityTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/UtilityTypes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AuthProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AuthProvider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Drawer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/depricated/Drawer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/depricated/Header.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PrivateRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/depricated/PrivateRoute.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/requests.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/requests.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,29 +51,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/ReposDev/Git/GraduationProject/front-end-react/src/Pages",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2022.2\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/ReposDev/Git/GraduationProject/front-end-react&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2022.2\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\ReposDev\Git\GraduationProject\front-end-react\src\Pages" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\ReposDev\Git\GraduationProject\front-end-react\src\depricated" />
       <recent name="D:\ReposDev\Git\GraduationProject\front-end-react\ignore" />
       <recent name="D:\ReposDev\Git\GraduationProject\front-end-react\src\pages" />
     </key>
@@ -81,6 +93,8 @@
       <workItem from="1662120824444" duration="2940000" />
       <workItem from="1662124066351" duration="5090000" />
       <workItem from="1662194149356" duration="61729000" />
+      <workItem from="1662579853957" duration="24000" />
+      <workItem from="1662581185895" duration="8542000" />
     </task>
     <servers />
   </component>

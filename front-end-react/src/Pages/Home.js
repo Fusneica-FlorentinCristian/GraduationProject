@@ -5,7 +5,7 @@ const Home = (props) => {
   return (
       <Page title="Home">
           <Grid container item>
-              ceva
+              Acasa
           </Grid>
       </Page>
   );

@@ -22,6 +22,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import {useAuth} from "./AuthProvider";
 import {useEffect} from "react";
+import {useNavigate} from "react-router-dom";
 
 function ElevationScroll(props) {
     const { children, window } = props;
@@ -121,12 +122,15 @@ export default function Page(props) {
     const [open, setOpen] = React.useState(false);
 
     const auth = useAuth()
+    const navigate = useNavigate()
 
     useEffect(() => {
         if(auth.onLogin) {
             auth.onLogin()
         }
-    }, [auth])
+    }, [auth.user])
+
+    useEffect(() => {}, [auth.user?.refresh])
 
     const handleDrawerOpen = () => {
         // console.log(prevOpen)
@@ -136,9 +140,6 @@ export default function Page(props) {
         }));
     };
 
-    // const handleDrawerClose = () => {
-    //     setOpen(false);
-    // };
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
@@ -156,9 +157,13 @@ export default function Page(props) {
                             {open ? <ChevronLeftIcon />: <MenuIcon/>}
                         </IconButton>
                         <Typography textAlign={"left"} variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                            News
+                            {props.title}
                         </Typography>
-                        <Button color="inherit">Login</Button>
+                        {
+                            auth.user === null ?
+                                <Button color="inherit" onClick={() => {navigate('/login')}}>Login</Button> :
+                                <Button color="inherit" onClick={auth.onLogout}>Logout</Button>
+                        }
                     </Toolbar>
                 </AppBar>
             </ElevationScroll>

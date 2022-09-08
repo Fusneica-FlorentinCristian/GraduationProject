@@ -1,5 +1,5 @@
 import {createContext, useContext, useState} from "react";
-import {getCookie} from "../utilities/apiUtilities";
+import {getCookie, removeCookie} from "../utilities/apiUtilities";
 import {useLocation, useNavigate} from "react-router-dom";
 
 
@@ -21,14 +21,16 @@ export const UserProvider = (props) => {
 
             if(userInfo !== '')
                 setUser(JSON.parse(userInfo))
-            else
-            if(location.pathname !== "login")
-                navigate("/login")
+            // else
+            // if(location.pathname !== "/login")
+            //     navigate("/login")
         }
     };
 
     const handleLogout = () => {
-        setUser(null)};
+        setUser(null)
+        removeCookie('user');
+    };
 
     const value = {
         user: user,

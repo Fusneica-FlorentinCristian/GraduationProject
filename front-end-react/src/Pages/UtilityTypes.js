@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {getUtilityTypes} from "../requests";
+import {Grid} from "@mui/material";
+import Page from "../components/Page";
 
-export default function Login(){
+export default function UtilityTypes(){
 
-    const [property, setProperty] = useState(null)
+    const [data, setData] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
@@ -12,19 +14,21 @@ export default function Login(){
             getUtilityTypes(0).then(response => {
                 if(response.data)
                 {
-                    setProperty(response.data)
+                    setData(response.data)
                     setIsLoading(false)
                 }
                 else
-                    setProperty({error: 'There was an error'})
+                    setData({error: 'There was an error'})
 
             })
         }
     }, [isLoading])
 
 return (
-    <div>
-        <h3>Login page</h3>
-        {property ? JSON.stringify(property) : 'Still loading'}
-    </div>)
+        <Page title="UtilityType">
+            <Grid container item>
+                {data ? JSON.stringify(data) : 'Still loading'}
+            </Grid>
+        </Page>
+    )
 }

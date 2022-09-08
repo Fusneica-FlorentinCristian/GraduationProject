@@ -80,7 +80,7 @@ export default function Register(){
                                     <FormLabel id="demo-radio-buttons-group-label">Are you a landlord or a tenant?</FormLabel>
                                     <RadioGroup
                                         aria-labelledby="demo-radio-buttons-group-label"
-                                        defaultValue={formData.role}
+                                        defaultValue={"tenant"}
                                         // name="role"
                                         // id="role"
                                         onChange={handleInputChange}

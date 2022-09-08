@@ -37,6 +37,16 @@ export const getUtilityTypes = (utilityTypeDepth) => {
     return apiController(GET_UTILITY_TYPE_ENDPOINT, 'GET')
 };
 
+export const getProperties = (filters='') => {
+    const GET_PROPERTY_ENDPOINT= baseUrl('api/property/' + filters);
+    return apiController(GET_PROPERTY_ENDPOINT, 'GET')
+};
+
+export const getUsers = (filters='', page=1) => {
+    const GET_USERS_ENDPOINT= baseUrl('api/user/?page=' + page);
+    return apiController(GET_USERS_ENDPOINT, 'GET')
+};
+
 export const getUser = (userData) => {
     const GET_USER_ENDPOINT= baseUrl('api/auth/login/');
     return apiController(GET_USER_ENDPOINT, 'POST', userData)
